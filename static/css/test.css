@@ -1,18 +1,20 @@
 .center {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	-moz-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-	-o-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
-.font1{
-	font-size: 100px;
-	color: white;
+
+.font1 {
+    font-size: 100px;
+    color: white;
 }
-.font2{
-	font-size: 75px;
-	color: white;
+
+.font2 {
+    font-size: 75px;
+    color: white;
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {#  引入静态文件  #}
+    {#  引用静态文件 load static  #}
     {% load static %}
     <link rel="stylesheet" href="{% static "lib/layui/css/layui.css" %}">
     <script src="{% static "lib/layui/layui.js" %}"></script>
@@ -12,23 +12,20 @@
 </head>
 <body bgcolor="#393D49">
 <ul class="layui-nav">
-    <ul class="layui-nav">
-        {#  引用静态链接 url urls.路由名  #}
-        <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'studentLogin' %}"
-                                                          style="text-align: center;">StudentLogin</a>
-        </li>
-        <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'parentLogin' %}"
-                                                          style="text-align: center;">ParentLogin</a>
-        </li>
-        <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'teacherLogin' %}"
-                                                          style="text-align: center;">TeacherLogin</a>
-        </li>
-        <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'Home' %}" style="text-align: center;">Home</a>
-        </li>
-        <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'studentRegister' %}"
-                                                          style="text-align: center;">Register</a>
-        </li>
-    </ul>
+    {#  引用静态链接 url urls.路由名  #}
+    <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'studentLogin' %}"
+                                                      style="text-align: center;">StudentLogin</a>
+    </li>
+    <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'parentLogin' %}"
+                                                      style="text-align: center;">ParentLogin</a>
+    </li>
+    <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'teacherLogin' %}"
+                                                      style="text-align: center;">TeacherLogin</a>
+    </li>
+    <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'Home' %}" style="text-align: center;">Home</a>
+    </li>
+    <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'studentRegister' %}" style="text-align: center;">Register</a>
+    </li>
 </ul>
 <div class="center">
     <div class="font2">

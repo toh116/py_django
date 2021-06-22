@@ -48,7 +48,10 @@ def ajaxStudentLogin(request):
     data = request.GET
     userid = data.get('userid')
     userpassword = data.get('userpassword')
-    count = Students.objects.filter(id=userid, password=userpassword).count()
+    try:
+        count = Students.objects.filter(id=userid, password=userpassword).count()
+    except:
+        count = 0
     s = ''
     if count >= 1:
         s = 'true'
