@@ -24,9 +24,14 @@
                                                           style="text-align: center;">TeacherLogin</a>
         </li>
         <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'Home' %}" style="text-align: center;">Home</a>
-    </li>
-    <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'studentRegister' %}" style="text-align: center;">Register</a>
-    </li>
+        </li>
+        <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'studentRegister' %}"
+                                                          style="text-align: center;">Register</a>
+        </li>
+        </li>
+        <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'studentRegister' %}"
+                                                          style="text-align: center;">Register</a>
+        </li>
     </ul>
 </ul>
 <div class="center">
@@ -78,6 +83,28 @@
                     layer.msg('Loading');
                 });
                 $.ajax('login')
+
+                $.ajax({
+                    {#'url': '/ajaxStudentLogin',#}
+                    {#type: "GET",#}
+                    {#dataType: "json",#}
+                    url: "{% url 'ajaxStudentLogin' %}",
+                    data: {
+                        'userid': userid,
+                        'userpassword': userpassword
+                    },
+                    success: function (msg) {
+                        if (msg == 'true') {
+                            {#window.location = '/StudentLoginSuccessful'#}
+                            window.location = "{% url 'StudentLoginSuccessful' %}"
+                        } else {
+                            layui.use('layer', function () {
+                                var layer = layui.layer;
+                                layer.msg('Inconsistent account and password');
+                            });
+                        }
+                    }
+                })
             }
         })
     })
