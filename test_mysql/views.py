@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 
 from .models import *
 
@@ -42,6 +42,23 @@ def teacherRegister(request):
 
 def parentRegister(request):
     return render(request, 'front/parentRegister.html')
+
+
+def ajaxStudentLogin(request):
+    data = request.GET
+    userid = data.get('userid')
+    userpassword = data.get('userpassword')
+    count = Students.objects.filter(id=userid, password=userpassword).count()
+    s = ''
+    if count >= 1:
+        s = 'true'
+    else:
+        s = 'false'
+    return HttpResponse(s)
+
+
+def StudentLoginSuccessful(request):
+    return render(request, 'front/StudentLoginSuccessful.html')
 
 
 def test(request):

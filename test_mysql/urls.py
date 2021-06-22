@@ -14,6 +14,8 @@ urlpatterns = [
     path("studentRegister/", views.studentRegister, name="studentRegister"),
     path("teacherRegister/", views.teacherRegister, name="teacherRegister"),
     path("parentRegister/", views.parentRegister, name="parentRegister"),
+    path("ajaxStudentLogin/", views.ajaxStudentLogin, name="ajaxStudentLogin"),
+    path("StudentLoginSuccessful/", views.StudentLoginSuccessful, name="StudentLoginSuccessful"),
     path("test/", views.test),
     path("test1/", views.test1),
 ]

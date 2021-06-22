@@ -78,12 +78,6 @@
                     layer.msg('Please enter your password');
                 });
             } else {
-                layui.use('layer', function () {
-                    var layer = layui.layer;
-                    layer.msg('Loading');
-                });
-                $.ajax('login')
-
                 $.ajax({
                     {#'url': '/ajaxStudentLogin',#}
                     {#type: "GET",#}
