@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {#  引入静态文件  #}
+    {% load static %}
+    <link rel="stylesheet" href="{% static "lib/layui/css/layui.css" %}">
+    <script src="{% static "lib/layui/layui.js" %}"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static "css/test.css" %}">
+    <title>Four Operations System</title>
+</head>
+<body bgcolor="#393D49">
+<ul class="layui-nav">
+    {#  引用静态链接 url urls.路由名  #}
+    <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'studentRegister' %}"
+                                                      style="text-align: center;">StudentRegister</a>
+    </li>
+    <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'parentRegister' %}"
+                                                      style="text-align: center;">ParentRegister</a>
+    </li>
+    <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'teacherRegister' %}"
+                                                      style="text-align: center;">TeacherRegister</a>
+    </li>
+    <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'Home' %}" style="text-align: center;">Home</a>
+    </li>
+    <li class="layui-nav-item" style="width: 10%;"><a href="{% url 'studentLogin' %}"
+                                                      style="text-align: center;">Login</a>
+    </li>
+</ul>
+<div class="center">
+    <div class="font2">
+        Register
+        <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/microsoft/209/electric-light-bulb_1f4a1.png"
+             style="width: 60px;height: 60px;"/>
+    </div>
+    <br>
+    <form class="layui-form">
+        <div class="layui-form-item">
+            <div class="layui-input-inline" style="width: 300px;">
+                <input type="text" id="username" required lay-verify="required" placeholder="name"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux" id="username_test"></div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-inline" style="width: 300px;">
+                <input type="text" id="userid" required lay-verify="required" placeholder="id"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux" id="userid_test"></div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-inline" style="width: 300px;">
+                <input type="password" id="userpassword" required lay-verify="required" placeholder="password"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux" id="userpassword_test"></div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-inline" style="width: 300px;">
+                <input type="password" id="userconfirm" required lay-verify="required"
+                       placeholder="confirm password" autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux" id="userconfirm_test"></div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-inline" style="width: 300px;">
+                <input type="text" id="useremail" required lay-verify="required" placeholder="email"
+                       autocomplete="off" class="layui-input">
+            </div>
+            <div class="layui-form-mid layui-word-aux" id="useremail_test"></div>
+        </div>
+        <button type="button" id="register" class="layui-btn"
+                style="width: 300px;font-weight: bold;">Register
+        </button>
+    </form>
+</div>
+<script>
+    $(document).ready(function () {
+        var id = 0
+        var name = 0
+        var confirm = 0
+        var password = 0
+        var email = 0
+        $('#username').on('input', function () {
+            if ($('#username').val().length == 0) {
+                $('#username_test').text('cannot be empty')
+                id = 0
+            } else {
+                $('#username_test').text('ok')
+                id = 1
+            }
+        })
+        $('#userid').on('input', function () {
+            if ($('#userid').val().length == 0) {
+                $('#userid_test').text('cannot be empty')
+                name = 0
+            } else {
+                $('#userid_test').text('ok')
+                name = 1
+            }
+        })
+        $('#userpassword').on('input', function () {
+            if ($('#userpassword').val().length == 0) {
+                $('#userpassword_test').text('cannot be empty')
+                password = 0
+            } else {
+                $('#userpassword_test').text('ok')
+                password = 1
+            }
+        })
+        $('#userconfirm').on('input', function () {
+            if ($('#userconfirm').val().length == 0) {
+                $('#userconfirm_test').text('cannot be empty')
+                confirm = 0
+            } else if ($('#userpassword').val() != $('#userconfirm').val()) {
+                $('#userconfirm_test').text('disaccord')
+                confirm = 0
+            } else {
+                $('#userconfirm_test').text('ok')
+                confirm = 1
+            }
+        })
+        $('#useremail').on('input', function () {
+            var re = /^([\.a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(\.[a-zA-Z0-9_-])+/;
+            if ($('#useremail').val().length == 0) {
+                $('#useremail_test').text('cannot be empty')
+                email = 0
+            } else if (!re.test($('#useremail').val())) {
+                $('#useremail_test').text('error')
+                email = 0
+            } else {
+                $('#useremail_test').text('ok')
+                email = 1
+            }
+        })
+        $('#register').click(function () {
+            if (name && id && password && confirm && email) {
+                layui.use('layer', function () {
+                    var layer = layui.layer;
+                    layer.msg('Register Successfully');
+                });
+            } else {
+                layui.use('layer', function () {
+                    var layer = layui.layer;
+                    layer.msg('Register Fail');
+                });
+            }
+        })
+    })
+</script>
+</body>
+</html>
