@@ -83,7 +83,7 @@
                     success: function (msg) {
                         if (msg == 'true') {
                             {#window.location = '/StudentLoginSuccessful'#}
-                            window.location = "{% url 'StudentLoginSuccessful' %}"
+                            window.location = "{% url 'StudentLoginSuccessful' %}?userid="+userid
                         } else {
                             layui.use('layer', function () {
                                 var layer = layui.layer;

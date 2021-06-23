@@ -15,10 +15,10 @@
     <li class="layui-nav-item">
         <a href=""><img
                 src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/320/google/3/smiling-face-with-open-mouth-and-smiling-eyes_1f604.png"
-                class="layui-nav-img">Hi ~ {{ name | default:"my" }}</a>
+                class="layui-nav-img">my</a>
         <dl class="layui-nav-child">
             <dd><a href="javascript:;">Settings</a></dd>
-            <dd><a href="javascript:logout();">Logout</a></dd>
+            <dd><a href="javascript:;">Logout</a></dd>
         </dl>
     </li>
     <li class="layui-nav-item">
@@ -37,41 +37,5 @@
                 class="layui-nav-img">Other</a>
     </li>
 </ul>
-<div class="center">
-    <div class="font2">
-        Login
-        <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/sparkles_2728.png"
-             style="width: 60px;height: 60px;"/>
-    </div>
-    <br>
-    <form class="layui-form">
-
-            <div class="layui-input-inline" style="width: 50px;">
-                <input type="text" id="userid" required lay-verify="required" placeholder="请输入答案"
-                       autocomplete="off" class="layui-input">
-            </div>
-
-
-            <div class="layui-input-inline" style="width: 300px;">
-                <input type="password" id="userpassword" required lay-verify="required" placeholder="请输入答案"
-                       autocomplete="off" class="layui-input">
-            </div>
-
-        <button type="button" id="bt" class="layui-btn" style="width: 300px;font-weight: bold;">提交</button>
-    </form>
-</div>
-<script>
-    $(document).ready(function () {
-        var date = new Date().toLocaleTimeString()
-        layui.use('layer', function () {
-            var layer = layui.layer;
-            layer.msg('现在是' + date + '分，给努力的你鼓个劲');
-        });
-    })
-
-    function logout() {
-        window.location = "{% url 'studentLogin' %}"
-    }
-</script>
 </body>
 </html>

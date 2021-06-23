@@ -61,7 +61,11 @@ def ajaxStudentLogin(request):
 
 
 def StudentLoginSuccessful(request):
-    return render(request, 'front/StudentLoginSuccessful.html')
+    data = request.GET
+    userid = data.get('userid')
+    student = Students.objects.filter(id=userid)
+    name = student.values('name')[0]
+    return render(request, 'front/StudentLoginSuccessful.html', name)
 
 
 def test(request):
