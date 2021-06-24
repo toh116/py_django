@@ -38,27 +38,30 @@
     </li>
 </ul>
 <div class="center">
-    <div class="font2">
-        Login
-        <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/sparkles_2728.png"
-             style="width: 60px;height: 60px;"/>
-    </div>
-    <br>
-    <form class="layui-form">
-
-            <div class="layui-input-inline" style="width: 50px;">
-                <input type="text" id="userid" required lay-verify="required" placeholder="请输入答案"
-                       autocomplete="off" class="layui-input">
-            </div>
-
-
-            <div class="layui-input-inline" style="width: 300px;">
-                <input type="password" id="userpassword" required lay-verify="required" placeholder="请输入答案"
-                       autocomplete="off" class="layui-input">
-            </div>
-
-        <button type="button" id="bt" class="layui-btn" style="width: 300px;font-weight: bold;">提交</button>
-    </form>
+    <table id="demo" lay-filter="test"></table>
+    <script>
+        layui.use('table', function () {
+            var table = layui.table;
+            //第一个实例
+            table.render({
+                elem: '#demo'
+                , height: 312
+                , url: '/demo/table/user/' //数据接口
+                , page: true //开启分页
+                , cols: [[ //表头
+                    {field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left'}
+                    , {field: 'username', title: '用户名', width: 80}
+                    , {field: 'sex', title: '性别', width: 80, sort: true}
+                    , {field: 'city', title: '城市', width: 80}
+                    , {field: 'sign', title: '签名', width: 177}
+                    , {field: 'experience', title: '积分', width: 80, sort: true}
+                    , {field: 'score', title: '评分', width: 80, sort: true}
+                    , {field: 'classify', title: '职业', width: 80}
+                    , {field: 'wealth', title: '财富', width: 135, sort: true}
+                ]]
+            });
+        });
+    </script>
 </div>
 <script>
     $(document).ready(function () {
